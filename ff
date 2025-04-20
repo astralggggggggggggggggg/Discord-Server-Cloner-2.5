@@ -1,0 +1,174 @@
+-- Carregar a biblioteca
+local EtherealLib = loadstring(game:HttpGet("https://pastebin.com/raw/pSRMehqT"))()
+
+-- Criar a janela principal
+local Window = EtherealLib:CreateWindow({
+    WindowName = "Ethereal",
+    ProjectName = "Project Delta",
+    Color = {
+        Main = Color3.fromRGB(25, 25, 35),
+        Secondary = Color3.fromRGB(35, 35, 45),
+        Accent = Color3.fromRGB(0, 255, 140),
+        Text = Color3.fromRGB(255, 255, 255)
+    }
+})
+
+-- Criar abas
+local CombatTab = Window:CreateTab("Combat")
+local VisualsTab = Window:CreateTab("Visuals")
+local MiscTab = Window:CreateTab("Miscellaneous")
+local SettingsTab = Window:CreateTab("Settings")
+local RelationsTab = Window:CreateTab("Relations")
+
+-- Aba ESP (como na imagem)
+local ESPSection = VisualsTab:Section("ESP")
+local ESPMainSection = VisualsTab:Section("Main")
+
+-- Toggles de ESP
+local ESPEnabled = ESPMainSection:Toggle({
+    Name = "Enabled",
+    Default = true,
+    Callback = function(Value)
+        -- Lógica para ativar/desativar o ESP
+        print("ESP Enabled:", Value)
+    end
+})
+
+local IncludeAI = ESPMainSection:Toggle({
+    Name = "Include AI",
+    Default = true,
+    Callback = function(Value)
+        -- Lógica para incluir/excluir IA
+        print("Include AI:", Value)
+    end
+})
+
+local BoundingBox = ESPMainSection:Toggle({
+    Name = "Bounding box",
+    Default = true,
+    Callback = function(Value)
+        -- Lógica para ativar/desativar caixas delimitadoras
+        print("Bounding Box:", Value)
+    end
+})
+
+local Healthbar = ESPMainSection:Toggle({
+    Name = "Healthbar",
+    Default = true,
+    Callback = function(Value)
+        -- Lógica para mostrar/ocultar barras de saúde
+        print("Healthbar:", Value)
+    end
+})
+
+-- Configurações de cores para Healthbar
+local HealthbarColors = ESPMainSection:ColorPicker({
+    Name = "Healthbar Colors",
+    Default = Color3.fromRGB(0, 255, 0),
+    Callback = function(Value)
+        -- Lógica para alterar a cor das barras de saúde
+        print("Healthbar Color:", Value)
+    end
+})
+
+-- Configurações do tamanho do ESP
+local ESPWorldSection = VisualsTab:Section("World")
+
+local ESPWidth = ESPWorldSection:Slider({
+    Name = "Width",
+    Min = 1,
+    Max = 10,
+    Default = 2,
+    Increment = 1,
+    Callback = function(Value)
+        -- Lógica para ajustar a largura do ESP
+        print("ESP Width:", Value)
+    end
+})
+
+local ESPHeight = ESPWorldSection:Slider({
+    Name = "Height",
+    Min = 1,
+    Max = 20,
+    Default = 16,
+    Increment = 1,
+    Callback = function(Value)
+        -- Lógica para ajustar a altura do ESP
+        print("ESP Height:", Value)
+    end
+})
+
+local ESPRadius = ESPWorldSection:Slider({
+    Name = "Radius",
+    Min = 50,
+    Max = 2000,
+    Default = 300,
+    Increment = 50,
+    Callback = function(Value)
+        -- Lógica para ajustar o raio de renderização do ESP
+        print("ESP Radius:", Value)
+    end
+})
+
+-- Seção para Hazards como na imagem
+local HazardsSection = ESPSection:Section("Hazards")
+
+local GrenadesESP = HazardsSection:Toggle({
+    Name = "Grenades",
+    Default = false,
+    Callback = function(Value)
+        -- Lógica para ativar/desativar ESP de granadas
+        print("Grenades ESP:", Value)
+    end
+})
+
+-- Configurações de cores para grenades
+local GrenadeColors = HazardsSection:ColorPicker({
+    Name = "Grenade Colors",
+    Default = Color3.fromRGB(255, 0, 0),
+    Callback = function(Value)
+        -- Lógica para alterar a cor do ESP de granadas
+        print("Grenade Color:", Value)
+    end
+})
+
+-- Adicionar outros componentes do ESP como na imagem
+local VehiclesESP = ESPSection:Toggle({
+    Name = "Vehicles",
+    Default = false,
+    Callback = function(Value)
+        -- Lógica para ativar/desativar ESP de veículos
+        print("Vehicles ESP:", Value)
+    end
+})
+
+local CorpsesESP = ESPSection:Toggle({
+    Name = "Corpses",
+    Default = false,
+    Callback = function(Value)
+        -- Lógica para ativar/desativar ESP de corpos
+        print("Corpses ESP:", Value)
+    end
+})
+
+local ExtractsESP = ESPSection:Toggle({
+    Name = "Extracts",
+    Default = false,
+    Callback = function(Value)
+        -- Lógica para ativar/desativar ESP de pontos de extração
+        print("Extracts ESP:", Value)
+    end
+})
+
+-- Definir distância máxima para o ESP
+local MaxDistance = ESPSection:Slider({
+    Name = "Max Distance",
+    Min = 100,
+    Max = 2000,
+    Default = 1000,
+    Increment = 100,
+    Callback = function(Value)
+        -- Lógica para ajustar a distância máxima do ESP
+        print("ESP Max Distance:", Value)
+    end
+})
